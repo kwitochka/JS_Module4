@@ -18,3 +18,16 @@ img {
     margin: 10px;
     width: 150px;
 }
+
+.red {
+    color: rgb(173, 10, 10);
+}
+
+.underline{
+    text-decoration: underline;
+}
+
+.border_underline {
+    border-bottom: 2px solid black;
+    z-index: 6;
+}

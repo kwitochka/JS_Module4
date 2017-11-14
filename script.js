@@ -1,32 +1,32 @@
 //Task 1
-function turnRed(){
-    var par = document.querySelectorAll('p');
-    for(var i = 0; i <par.length; i++){
-      par[i].style.color = 'red';
+var textBtn = document.querySelector(".text_color");
+
+textBtn.onclick = function turnRed() {
+  var par = document.querySelectorAll("p");
+  for (var i = 0; i < par.length; i++) {
+    par[i].classList.toggle("red");
   }
-    return par;}
-  
-  turnRed();
-  
-  //Task 2
-  function shadePics(){
-    var pic = document.querySelectorAll('img');
-    for(var i=0; i < pic.length; i++){
-      pic[i].setAttribute('style',  'box-shadow: 1px 5px 5px 3px lightblue');
-    }
+};
+
+//Task 2
+function shadePics() {
+  var pic = document.querySelectorAll('img');
+  for (var i = 0; i < pic.length; i++) {
+    pic[i].setAttribute('style', 'box-shadow: 1px 5px 5px 3px lightblue');
   }
-  
-  shadePics();   
+}
+
+shadePics();
 //Task 3
-  function countPar(){
-    var par = document.querySelectorAll('p');
-    for(var i = 0, count = 1; i < par.length; i++, count++){
-      par[i].innerHTML = count + '. ' + par[i].textContent;
-    }
-    return par;
+function countPar() {
+  var par = document.querySelectorAll('p');
+  for (var i = 0, count = 1; i < par.length; i++, count++) {
+    par[i].innerHTML = count + '. ' + par[i].textContent;
   }
-  
-  countPar();
+  return par;
+}
+
+countPar();
 
 //Task 4   
 var countUp = document.querySelector('.click_pls');
@@ -34,94 +34,130 @@ var countDown = document.querySelector('.click_mns');
 var clicksNum = document.querySelector('.clicks');
 var countClicks = 0;
 
-countUp.addEventListener('click', function(){
-   count+=1; 
-   clicksNum.innerHTML = countClicks;
+countUp.addEventListener('click', function () {
+  countClicks += 1;
+  clicksNum.innerHTML = countClicks;
 });
-countDown.addEventListener('click', function(){
-  count-=1;
+countDown.addEventListener('click', function () {
+  countClicks -= 1;
   clicksNum.innerHTML = countClicks;
 });
 
 
 //Task 5
-function pow(a, b){
-  var result = Math.pow(a,b);
-  alert(a + ' ** ' + b + ' = ' + result);
-}
-
-pow(5,5);
-pow(3, 9);
+var powBtn = document.querySelector('.calculate');
+powBtn.onclick = function pow() {
+  var int = document.querySelector('.intenger').value;
+  var power = document.querySelector('.power').value;
+  var result = Math.pow(int, power);
+  var showResult = document.querySelector('.power_result');
+  showResult.innerHTML += '' + int + ' in the power of ' + power + ' = ' + result;
+};
 
 //TASK 6 
-function underlineTag(e){
-  var tag = document.getElementsByTagName(e);
-  for (var i = 0; i < tag.length; i++){
-  tag[i].style.textDecoration = 'underline';
+var underlineBtn = document.querySelector('.underline');
+underlineBtn.onclick = function underlineTag() {
+  var el = document.querySelector('.tag_to_underline').value;
+  var tag = document.getElementsByTagName(el);
+  if (tag) {
+    for (var i = 0; i < tag.length; i++) {
+      if (el == 'img') {
+        tag[i].classList.toggle('border_underline');
+      } else {
+        tag[i].classList.toggle('underline');
+      }
+    }
+  } else {
+    alert('No such tag. Please choose between p (for paragraphs, h3 for headers, and img for images.');
   }
-}
-underlineTag('p');
+};
 
-//TASK 7 & 8
-// accessValidation();
-// accessValidation(5);
-// accessValidation(18);
+//TASK 7 (age validation) & 8
 
 var ageBtn = document.querySelector('#age_btn');
-// function accessValidation(age){
-  // }
-  
-  ageBtn.addEventListener('click', function accessValidation(){
+ageBtn.addEventListener('click', function accessValidation() {
   var age = +document.querySelector('#age').value;
-  if(age){
-   if(age > 16){
+  if (age) {
+    if (age > 16) {
       alert('Welcome \n' + '(age: ' + age + ')');
-    } 
-    else{
-     alert('You are too young \n' + '(age: ' + age + ')');  
+    } else {
+      alert('You are too young \n' + '(age: ' + age + ')');
     }
-  }
-  else {
-   alert("Give me your age \n");
+  } else {
+    alert("Give me your age \n");
   }
   console.log('age---' + typeof age);
 });
 
 //TASK 9
-function countEl(arr){
-  if(arr === undefined || arr === null){
-    console.log('Task 9: ERROR');
+var arr = [];
+var submitButton = document.querySelector(".submit");
+var text = document.querySelector("#new");
+submitButton.addEventListener("click", createArray);
+
+var arrLength = function () {
+  if (arr === undefined || arr === null) {
+    return (' Array length: ERROR');
   } else {
-    console.log('Task 9: ' + arr.length);
+    return (' Array length: ' + arr.length);
   }
+};
+
+function createArray() {
+  var index = document.querySelector(".index");
+  var value = document.querySelector(".value");
+  var readyIndex = parseInt(index.value);
+  arr[readyIndex] = value.value;
+  text.innerHTML = arr + ': ' + arrLength();
 }
 
-var arr1 = ['Hello World', 13, {age: 32}];
-var arr2 = ['Somewhere', 'over', 'the', 'rainbow'];
-var arr3 = [];
-countEl(arr1);
-countEl(arr2);
-countEl(arr3);
-countEl();
+//Delete last element
+var popButton = document.querySelector(".pop");
+popButton.addEventListener("click", function () {
+  arr.pop();
+  text.innerHTML = arr + ': ' + arrLength();
+});
+
+//Delete first element
+var shiftButton = document.querySelector(".shift");
+shiftButton.addEventListener("click", function () {
+  arr.shift();
+  text.innerHTML = arr + ': ' + arrLength();
+});
+
+//Add an element to the tail
+var pushButton = document.querySelector(".push");
+pushButton.addEventListener("click", function () {
+  var value = document.querySelector(".value");
+  arr.push(value.value);
+  text.innerHTML = arr + ': ' + arrLength();
+});
+
+//Add first element
+var unshiftButton = document.querySelector(".unshift");
+unshiftButton.addEventListener("click", function () {
+  var value = document.querySelector(".value");
+  arr.unshift(value.value);
+  text.innerHTML = arr + ': ' + arrLength();
+});
+
 
 //TASK 10
 
 var button = document.querySelector('.task10_number');
-button.addEventListener('click', function compareNum(){
+button.addEventListener('click', function compareNum() {
   var task10Result = document.querySelector('.task10_result');
   task10Result.innerHTML = numbToComp();
 });
 
-function numbToComp(){
+function numbToComp() {
   var a = document.getElementById('task10_number').value;
-  if(a > 10){
-    return a*=a;
-  }
-  else if(a < 7) {
-    return ('Your number is less than 7'); 
-  }
-  else {
-    return a-=1;
+  if (a > 10) {
+    return a *= a;
+  } else if (a < 7) {
+    return ('Your number is less than 7');
+  } else {
+    return a -= 1;
   }
   return a;
 }
@@ -132,16 +168,25 @@ console.log('Random number: ' + randomNum);
 var guessBtn = document.querySelector('.guess_btn');
 var countTrials = 3;
 var countMatch = 0;
+
 function guessNum() {
   var userNum = document.querySelector('.guess_num').value;
   var trialsLeft = document.querySelector('.guess_trials');
+  if (countTrials > 0){
   countMatch += 1;
-     if (userNum == randomNum) {
-      alert("Congratulations, it's a match! You have guessed from the " + (countMatch) + " trial!");
-    } else {
-      countTrials-=1;
-      alert('Please try again.\n' + 'You have ' + countTrials + ' trial(s) left');
+  countTrials -= 1;
+  if (userNum == randomNum) {
+    alert("Congratulations, it's a match! You have guessed from the " + (countMatch) + " trial!");
+    guessBtn.disabled = true;
+  } else if (userNum > randomNum) {
+      alert('Try a smaller number.\n' + 'You have ' + countTrials + ' trial(s) left');
+  } else if (userNum < randomNum){
+      alert('Try a larger number.\n' + 'You have ' + countTrials + ' trial(s) left');
     }
   }
+  else{
+    guessBtn.disabled = true;
+  }
+}
 
 guessBtn.addEventListener('click', guessNum);

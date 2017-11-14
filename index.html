@@ -5,9 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Module 4</title>
-    <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="style.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
+    <button class="text_color">Change paragraph color</button>
     <h3>Task 1 &amp; 3</h3>
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere esse odio iusto tempora labore voluptas non dolore sed nobis culpa, ullam veritatis vel facilis consequatur perferendis fugiat, assumenda in qui.</p>
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium harum veritatis omnis beatae dolor possimus recusandae fugit molestias non iusto mollitia, nesciunt distinctio quam delectus. Temporibus, nisi, voluptates. Vitae, libero?</p>
@@ -25,9 +33,31 @@
     <button class="click_pls">Count Up</button>
     <button class="click_mns">Count Down</button>
 
-    <h3>Task 5</h3>
+    <h3>Task 5: Number to power</h3>
+    <input type="number" class="intenger" placeholder="Give me an intenger">
+    <input type="number" min="1" class="power" placeholder="Give me a power">
+    <button class="calculate">Find out the result</button>
+    <p class="power_result">The result: </p>
+
+    <h3>Task 6: underline any element of the page (if such exists)</h3>
+    Please insert an element tag you would like to underline: 
+    <input type="text" class="tag_to_underline"> 
+    <button class="underline">Underline</button>
+
+    <h3>Task 7: age validation.</h3>
     <input type="number" name="age" id="age">
     <button id="age_btn">Confirm age</button>
+
+    <h3>Task 9: read length of an array</h3>
+    <p>First create an array.</p>
+    <p id="new">Your array will be displayed here.</p>
+    <input type="number" class="index" placeholder="Your array length">
+    <input type="text" class="value">
+    <input type="submit" value="OK" class="submit">
+    <button class="pop btn btn-info">POP</button>
+    <button class="shift btn btn-primary">SHIFT</button>
+    <button class="push btn btn-success">PUSH</button>
+    <button class="unshift btn btn-warning">UNSHIFT</button>
     
     <h3>Task 10</h3>
     Please give me a number: <input type="number" name="number" id="task10_number">
